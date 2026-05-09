@@ -1,36 +1,58 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# SimplexAI
 
-## Getting Started
+Application Next.js pour résoudre des problèmes de programmation linéaire avec la méthode du simplexe, visualisation des tableaux, analyse de sensibilité, dual, graphe 2D et analyse IA.
 
-First, run the development server:
+## Installation
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Ouvrir [http://localhost:3000](http://localhost:3000), puis aller sur `/solver`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Variables d'environnement
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Créer un fichier `.env.local` à partir de `.env.example`:
 
-## Learn More
+```env
+AI_PROVIDER=openai
+AI_MODEL=gpt-4o
+AI_API_KEY=your_api_key_here
+AI_BASE_URL=https://api.openai.com/v1
+```
 
-To learn more about Next.js, take a look at the following resources:
+Exemples:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```env
+AI_PROVIDER=groq
+AI_MODEL=llama-3.3-70b-versatile
+AI_API_KEY=your_groq_key
+AI_BASE_URL=https://api.groq.com/openai/v1
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```env
+AI_PROVIDER=anthropic
+AI_MODEL=claude-3-5-sonnet-latest
+AI_API_KEY=your_anthropic_key
+AI_BASE_URL=https://api.anthropic.com
+```
 
-## Deploy on Vercel
+`AI_API_KEY` reste côté serveur dans `app/api/analyze/route.ts` et n'est jamais exposée au client.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Scripts
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+npm run lint
+npm run build
+```
+
+## Bibliothèques principales
+
+- Tailwind CSS pour l'interface
+- Framer Motion pour les transitions
+- KaTeX + react-katex pour les formulations mathématiques
+- Recharts pour les graphiques de sensibilité
+- Lucide React pour les icônes
+- React Markdown pour le rendu de l'analyse IA
+- jsPDF pour l'export PDF
